@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from typing import List
-from func import ocr, pdfmerger
+from func import ocrworker, pdfmerger
 
 app = FastAPI(
     title='PDF REST',
@@ -23,7 +23,7 @@ responses = {
 async def ocr(file: UploadFile = File(...)):
     if file.content_type != 'application/pdf':
         raise HTTPException(status_code=400, detail='Bad file type')
-    filepath = await ocr.scan(file)
+    filepath = await ocrworker.scan(file)
     return FileResponse(filepath)
 
 

@@ -1,4 +1,4 @@
-from PyPDF2 import PdfFileMerger, PdfFileReader
+from PyPDF2 import PdfMerger, PdfReader
 from fastapi import UploadFile
 from typing import List
 from os import path, mkdir, remove
@@ -8,7 +8,7 @@ tempdir = '/tmp/merger'
 
 
 async def merge(files: List[UploadFile]) -> str:
-    merger = PdfFileMerger()
+    merger = PdfMerger()
     filename = '{}.pdf'.format(uuid.uuid1())
     tempfiles = []
 
@@ -18,7 +18,7 @@ async def merge(files: List[UploadFile]) -> str:
     await save_files(files)
 
     for file in files:
-        merger.append(PdfFileReader('{}/{}'.format(tempdir, file.filename)))
+        merger.append(PdfReader('{}/{}'.format(tempdir, file.filename)))
         tempfiles.append(file.filename)
 
     await clean_files(tempfiles)

@@ -1,6 +1,6 @@
 fastapi[all]
-PyPDF2
+PyPDF2>=3.0.1
 pytesseract
-pillow
-ocrmypdf
+pillow>=10.0.1
+ocrmypdf>=15.0.0
 python-multipart
