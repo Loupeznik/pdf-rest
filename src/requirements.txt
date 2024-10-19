@@ -6,3 +6,4 @@ ocrmypdf>=15.0.0
 python-multipart
 fastapi>=0.109.1 # not directly required, pinned by Snyk to avoid a vulnerability
 anyio>=4.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
+starlette>=0.40.0 # not directly required, pinned by Snyk to avoid a vulnerability
